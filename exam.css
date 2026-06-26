@@ -1,0 +1,515 @@
+/* =====================================
+   EXAM PAGE STYLES
+===================================== */
+
+body{
+    background:#eef3fb;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ================= HEADER ================= */
+
+.exam-header{
+
+    height:90px;
+
+    background:white;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.brand h2{
+
+    color:#2563eb;
+
+}
+
+.candidate-info{
+
+    text-align:center;
+
+    font-size:15px;
+
+}
+
+.timer-box{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    min-width:150px;
+
+}
+
+#timer{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-top:5px;
+
+}
+
+/* ================= MAIN LAYOUT ================= */
+
+.exam-container{
+
+    display:grid;
+
+    grid-template-columns:280px 1fr;
+
+    gap:30px;
+
+    padding:30px;
+
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    padding:25px;
+
+    height:fit-content;
+
+}
+
+.sidebar h3{
+
+    margin-bottom:20px;
+
+}
+
+/* Question palette */
+
+#palette{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:10px;
+
+}
+
+.palette-btn{
+
+    height:45px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:#dbeafe;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.palette-btn:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* Question states */
+
+.palette-btn.active{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.palette-btn.answered{
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+.palette-btn.flagged{
+
+    background:#f59e0b;
+
+    color:white;
+
+}
+
+/* ================= QUESTION ================= */
+
+.question-area{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:35px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.progress{
+
+    height:12px;
+
+    background:#ddd;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:30px;
+
+}
+
+.progress-bar{
+
+    height:100%;
+
+    width:0%;
+
+    background:#2563eb;
+
+    transition:.3s;
+
+}
+
+#questionText{
+
+    margin-bottom:35px;
+
+    line-height:1.6;
+
+}
+
+/* ================= OPTIONS ================= */
+
+.option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px;
+
+    border:2px solid #ddd;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.option:hover{
+
+    border-color:#2563eb;
+
+    background:#f4f8ff;
+
+}
+
+.option input{
+
+    transform:scale(1.3);
+
+}
+
+.option.selected{
+
+    border-color:#2563eb;
+
+    background:#dbeafe;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.exam-buttons{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:40px;
+
+}
+
+.exam-buttons button{
+
+    padding:14px 26px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+#prevBtn{
+
+    background:#64748b;
+
+    color:white;
+
+}
+
+#flagBtn{
+
+    background:#f59e0b;
+
+    color:white;
+
+}
+
+#nextBtn{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.exam-buttons button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ================= SUBMIT ================= */
+
+.submit-area{
+
+    text-align:right;
+
+    margin-top:35px;
+
+}
+
+#submitExam{
+
+    background:#dc2626;
+
+    color:white;
+
+    border:none;
+
+    padding:16px 35px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:420px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    animation:pop .25s ease;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.modal-buttons button{
+
+    padding:12px 22px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+#cancelSubmit{
+
+    background:#64748b;
+
+    color:white;
+
+}
+
+#confirmSubmit{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes pop{
+
+from{
+
+transform:scale(.8);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+.exam-container{
+
+grid-template-columns:1fr;
+
+}
+
+.sidebar{
+
+order:2;
+
+}
+
+}
+
+@media(max-width:650px){
+
+.exam-header{
+
+flex-direction:column;
+
+height:auto;
+
+padding:20px;
+
+gap:15px;
+
+}
+
+.exam-buttons{
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.exam-buttons button{
+
+width:100%;
+
+}
+
+#submitExam{
+
+width:100%;
+
+}
+
+}

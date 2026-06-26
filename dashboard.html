@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Math CBT Pro | Dashboard</title>
+
+<link rel="stylesheet"
+href="main.css">
+
+<link href="icon.ico" rel="icon" type="image/x-icon">
+
+<link rel="stylesheet"
+href="dashboard.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<script defer src="dashboard.js"></script>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+🧮
+
+<h2>Math CBT Pro</h2>
+
+</div>
+
+
+
+
+
+<ul>
+
+<li class="active" id="dashboardBtn">
+🏠 Dashboard
+</li>
+
+<li id="mathBtn">
+📝 Mathematics
+</li>
+
+<li id="resultsBtn">
+📊 Results
+</li>
+
+<li id="settingsBtn">
+⚙ Settings
+</li>
+
+<li id="logoutBtn">
+🚪 Logout
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main Content -->
+
+<div class="main">
+
+<header>
+
+<div>
+
+<h1>
+
+Welcome,
+
+<span id="studentName">
+
+Student
+
+</span>
+
+</h1>
+
+<p>
+
+Ready for today's examination?
+
+</p>
+
+</div>
+
+<div class="profile">
+
+<div class="avatar">
+
+👤
+
+</div>
+
+</div>
+
+</header>
+
+<!-- Statistics -->
+
+<section class="stats">
+
+<div class="stat">
+
+<h4>
+
+Available Exams
+
+</h4>
+
+<h1>
+
+1
+
+</h1>
+
+</div>
+
+<div class="stat">
+
+<h4>
+
+Completed
+
+</h4>
+
+<h1 id="completedCount">
+
+0
+
+</h1>
+
+</div>
+
+<div class="stat">
+
+<h4>
+
+Highest Score
+
+</h4>
+
+<h1 id="highestScore">
+
+0%
+
+</h1>
+
+</div>
+
+</section>
+
+<!-- Available Exam -->
+
+<section class="exam-card">
+
+<h2>
+
+📘 Mathematics CBT
+
+</h2>
+
+<p>
+
+30 Questions
+
+</p>
+
+<p>
+
+60 Minutes
+
+</p>
+
+<p>
+
+Randomized Questions
+
+</p>
+
+<button id="startExam">
+
+Start Examination
+
+</button>
+
+</section>
+
+<!-- Previous Result -->
+
+<section class="history">
+
+<h2>
+
+Recent Result
+
+</h2>
+
+<div id="historyBox">
+
+No examination taken yet.
+
+</div>
+
+</section>
+
+</div>
+
+</body>
+
+</html>
