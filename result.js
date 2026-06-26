@@ -1,109 +1,91 @@
-const result =
-JSON.parse(
-localStorage.getItem("mathResult")
-);
+/* ===========================
+   Result Page - FIXED
+=========================== */
 
-if(!result){
-
-location.href="index.html";
-
-}
-
-document.getElementById("candidateName").textContent =
-result.student.name;
-
-document.getElementById("candidateNumber").textContent =
-result.student.candidate;
-
-document.getElementById("score").textContent =
-`${result.score} / ${result.total}`;
-
-document.getElementById("percentage").textContent =
-result.percentage + "%";
-
-document.getElementById("grade").textContent =
-result.grade;
-
-const review =
-document.getElementById("reviewContainer");
-
-result.review.forEach((item,index)=>{
-
-const div =
-document.createElement("div");
-
-div.className="review-item";
-
-div.innerHTML=`
-
-<h3>
-
-Question ${index+1}
-
-</h3>
-
-<p>
-
-${item.question}
-
-</p>
-
-<p>
-
-Your Answer:
-
-<strong class="${
-item.isCorrect
-?
-'correct'
-:
-'wrong'
-}">
-
-${
-item.userAnswer===null
-?
-'Not Answered'
-:
-item.options[item.userAnswer]
-}
-
-</strong>
-
-</p>
-
-<p>
-
-Correct Answer:
-
-<strong>
-
-${item.options[item.correctAnswer]}
-
-</strong>
-
-</p>
-
-`;
-
-review.appendChild(div);
-
-});
-
-document
-.getElementById("printBtn")
-.onclick=()=>{
-
-window.print();
-
+const StorageAPI = {
+    get(key) {
+        try {
+            return JSON.parse(localStorage.getItem(key));
+        } catch {
+            return null;
+        }
+    }
 };
 
-document
-.getElementById("restartBtn")
-.onclick=()=>{
+// ---------------------------
+// DOM
+// ---------------------------
+const nameEl = document.getElementById("candidateName");
+const numberEl = document.getElementById("candidateNumber");
+const scoreEl = document.getElementById("score");
+const percentageEl = document.getElementById("percentage");
+const gradeEl = document.getElementById("grade");
+const reviewContainer = document.getElementById("reviewContainer");
 
-localStorage.removeItem("mathResult");
+// ---------------------------
+// Load Result
+// ---------------------------
+function loadResult() {
 
-location.href="dashboard.html";
+    const result = StorageAPI.get("mathResult");
 
+    if (!result) {
+        document.body.innerHTML =
+            "<h2>No result found. Please retake exam.</h2>";
+        return;
+    }
+
+    const student = result.student || {};
+
+    nameEl.textContent = student.name || "Unknown Student";
+    numberEl.textContent = student.candidate || "";
+
+    scoreEl.textContent = `${result.score} / ${result.total}`;
+    percentageEl.textContent = `${result.percentage}%`;
+    gradeEl.textContent = result.grade || "N/A";
+
+    renderReview(result.review || []);
+}
+
+// ---------------------------
+// Render Review
+// ---------------------------
+function renderReview(review) {
+
+    reviewContainer.innerHTML = "";
+
+    review.forEach((q, i) => {
+
+        const div = document.createElement("div");
+        div.className = "review-item";
+
+        const status = q.isCorrect ? "correct" : "wrong";
+
+        div.innerHTML = `
+            <h4>${i + 1}. ${q.question}</h4>
+            <p>Your Answer: ${q.options[q.userAnswer] ?? "Not answered"}</p>
+            <p>Correct Answer: ${q.correctAnswer}</p>
+            <p class="${status}">
+                ${q.isCorrect ? "Correct" : "Wrong"}
+            </p>
+        `;
+
+        reviewContainer.appendChild(div);
+    });
+}
+
+// ---------------------------
+// Buttons
+// ---------------------------
+document.getElementById("restartBtn").onclick = () => {
+    window.location.href = "index.html";
 };
+
+document.getElementById("printBtn").onclick = () => {
+    window.print();
+};
+
+// ---------------------------
+// Init
+// ---------------------------
+loadResult();
